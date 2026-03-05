@@ -1,271 +1,345 @@
-Customer Churn Prediction – End-to-End Machine Learning Project
- Project Overview
 
-This project demonstrates an end-to-end Machine Learning pipeline for predicting customer churn. The objective is to identify customers who are likely to stop using a service so that businesses can take proactive actions to retain them.
 
-The project covers the full machine learning lifecycle including data preprocessing, exploratory data analysis, feature engineering, model training, evaluation, and deployment. The trained model is deployed as a REST API using FastAPI and hosted on AWS EC2, allowing real-time predictions.
+# 🚀 Customer Churn Prediction – End-to-End Machine Learning Project
 
-This repository is designed to showcase production-ready machine learning workflows, combining data science, backend development, and cloud deployment.
+## 📌 Project Overview
 
- Business Problem
+This project builds an **end-to-end machine learning pipeline** to predict customer churn. The system analyzes customer transaction behavior and predicts whether a customer is likely to leave the service.
 
-Customer churn is a major challenge for subscription-based businesses such as telecom companies, SaaS platforms, and e-commerce services.
+The trained model is deployed as a **REST API using FastAPI**, containerized using **Docker**, and hosted on **AWS EC2** for real-time predictions.
 
-Acquiring new customers is significantly more expensive than retaining existing ones. Therefore, predicting which customers are likely to churn allows businesses to:
+This repository demonstrates a **production-style machine learning workflow**, combining **data science, backend development, and cloud deployment**.
 
-Identify high-risk customers
+---
 
-Launch targeted retention campaigns
+# 🎯 Business Problem
 
-Improve customer satisfaction
+Customer churn is a critical problem for many businesses such as telecom, SaaS, and subscription-based platforms.
 
-Reduce revenue loss
+Losing customers directly impacts revenue. By predicting churn early, businesses can:
 
-This project builds a predictive system to estimate churn probability and churn classification.
+* Identify customers at risk
+* Offer retention strategies
+* Improve customer experience
+* Reduce revenue loss
 
- Dataset Description
+This project predicts churn probability based on customer transaction patterns.
 
-Dataset Source: Public Dataset / Kaggle
+---
 
-The dataset contains historical customer transaction behavior used to predict whether a customer will churn.
+# 📊 Dataset Description
 
-Key Features
-Feature	Description
-Frequency	Number of purchases made by a customer
-Monetary	Total amount spent by the customer
-AOV	Average Order Value
-Target Variable
-Column	Meaning
-Churn	0 = Customer stays
-Churn	1 = Customer leaves
+**Dataset Source:** Public dataset / Kaggle
 
- Technology Stack
-Programming Language
+### Key Features
 
-Python
+| Feature   | Description                            |
+| --------- | -------------------------------------- |
+| Frequency | Number of purchases made by a customer |
+| Monetary  | Total amount spent by the customer     |
+| AOV       | Average Order Value                    |
 
-Data Science Libraries
+### Target Variable
 
-Pandas
+| Value | Meaning             |
+| ----- | ------------------- |
+| 0     | Customer will stay  |
+| 1     | Customer will churn |
 
-NumPy
+---
 
-Scikit-learn
+# 🛠 Technology Stack
 
-Matplotlib
+### Programming Language
 
-Seaborn
+* Python
 
-Backend / API
+### Data Science
 
-FastAPI
+* Pandas
+* NumPy
+* Scikit-learn
+* Matplotlib
+* Seaborn
 
-Deployment
+### Backend
 
-AWS EC2
+* FastAPI
 
-Docker (Containerization)
+### Deployment
 
-Development Tools
+* Docker
+* AWS EC2
 
-Jupyter Notebook
+---
 
-Git
+# 🔄 Project Workflow
 
-GitHub
+## 1️⃣ Data Collection
 
-🔄 Project Workflow
-1️⃣ Data Collection
+The dataset was obtained from a publicly available source and loaded using Pandas.
 
-The dataset was obtained from a publicly available data source and loaded into a Pandas DataFrame for analysis.
+---
 
-2️⃣ Data Cleaning
+## 2️⃣ Data Cleaning
 
-Data preprocessing steps included:
+* Removed invalid transactions
+* Handled missing values
+* Ensured correct data types
 
-Handling missing values
+---
 
-Removing invalid transactions
+## 3️⃣ Exploratory Data Analysis
 
-Feature consistency checks
+EDA was performed to understand customer behavior.
 
-Data type conversion
+Key insights included:
 
-3️⃣ Exploratory Data Analysis (EDA)
+* Customer purchase frequency distribution
+* Spending patterns
+* Correlation between features
 
-Exploratory analysis was conducted to understand customer behavior patterns.
+Visualization tools:
 
-Key analysis included:
+* Matplotlib
+* Seaborn
 
-Customer purchase distribution
+---
 
-Spending patterns
+## 4️⃣ Feature Engineering
 
-Feature correlations
+Important customer behavior features were created:
 
-Churn distribution
+* Frequency
+* Monetary
+* Average Order Value (AOV)
 
-Visualization libraries used:
+These help measure **customer engagement and purchasing behavior**.
 
-Matplotlib
+---
 
-Seaborn
+## 5️⃣ Model Training
 
-4️⃣ Feature Engineering
+Models tested:
 
-New features were engineered to improve model performance.
+* Logistic Regression
+* Random Forest
 
-Examples:
+The best model was selected based on evaluation metrics.
 
-Frequency of purchases
+---
 
-Total monetary value
+## 6️⃣ Model Evaluation
 
-Average order value (AOV)
+Metrics used:
 
-These features help represent customer engagement and spending behavior.
+* Accuracy
+* Precision
+* Recall
+* F1 Score
+* ROC-AUC
 
-5️⃣ Model Training
+---
 
-Multiple machine learning algorithms were explored.
+## 7️⃣ Model Deployment
 
-Models Used
+The trained model was deployed using:
 
-Logistic Regression
+```
+Machine Learning Model
+        ↓
+FastAPI REST API
+        ↓
+Docker Container
+        ↓
+AWS EC2 Instance
+```
 
-Random Forest
+This allows real-time prediction through an API.
 
-XGBoost (optional)
+---
 
-The models were trained using Scikit-learn.
+# 🌐 API Deployment
 
-6️⃣ Model Evaluation
+The model is exposed through a REST endpoint.
 
-Models were evaluated using standard classification metrics.
+### Endpoint
 
-Metrics Used
-
-Accuracy
-
-Precision
-
-Recall
-
-F1 Score
-
-ROC-AUC
-
-The best-performing model was selected for deployment.
-
-7️⃣ Model Deployment
-
-The trained model was deployed as a REST API using FastAPI.
-
-Key steps included:
-
-Creating prediction endpoints
-
-Loading the trained model
-
-Accepting JSON input data
-
-Returning prediction results
-
-Containerizing the application using Docker
-
-Deploying the container on AWS EC2
-
-The API provides real-time predictions.
-
- Model Performance Metrics
-Metric	Score
-Accuracy	TBD
-Precision	TBD
-Recall	TBD
-F1 Score	TBD
-ROC-AUC	TBD
-
-(Update these values based on your trained model)
-
- API Deployment
-
-The trained model is deployed as a FastAPI service.
-
-Endpoint
+```
 POST /predict
-API Documentation
+```
 
-Swagger UI automatically generated by FastAPI:
+### API Documentation
 
-http://13.234.239.31:8000/docs
- Example API Request
+FastAPI automatically generates Swagger documentation.
+
+Example:
+
+```
+http://<EC2_PUBLIC_IP>:8000/docs
+```
+
+---
+
+# 📬 Example API Request
+
+```
+POST /predict
+```
+
+```json
 {
-  "Frequency": 10,
-  "Monetary": 5000,
-  "AOV": 50
+ "Frequency": 10,
+ "Monetary": 5000,
+ "AOV": 50
 }
- Example API Response
-{
-  "churn_probability": 0.23,
-  "prediction": 0
-}
-Interpretation
-Output	Meaning
-prediction = 0	Customer will stay
-prediction = 1	Customer likely to churn
+```
 
- Project Directory Structure
+---
+
+# 📤 Example API Response
+
+```json
+{
+ "churn_probability": 0.23,
+ "prediction": 0
+}
+```
+
+### Interpretation
+
+| Prediction | Meaning             |
+| ---------- | ------------------- |
+| 0          | Customer will stay  |
+| 1          | Customer will churn |
+
+---
+
+# 📂 Project Directory Structure
+
+```
 churn-api-deployment
 │
 ├── app
 │   ├── main.py
-│   ├── model_loader.py
-│   └── schema.py
+│   ├── schema.py
+│   └── model_loader.py
 │
 ├── artifacts
-│   ├── final_churn_model.pkl
+│   ├── final_churn_model.joblib
 │   ├── scaler.joblib
-│   └── feature_order.pkl
+│   └── threshold.joblib
 │
-├── requirements.txt
 ├── Dockerfile
-├── README.md
- Installation Instructions
+├── requirements.txt
+└── README.md
+```
+
+---
+
+# ⚙ Installation
 
 Clone the repository:
 
-git clone https://github.com/yourusername/churn-api-deployment.git
+```
+git clone https://github.com/Rohan1-tech/churn-api-deployment.git
+```
 
 Move into project directory:
 
+```
 cd churn-api-deployment
+```
 
 Install dependencies:
 
+```
 pip install -r requirements.txt
-▶ Running the Project Locally
+```
 
-Start the FastAPI server:
+---
 
+# ▶ Running the Project Locally
+
+Start FastAPI server:
+
+```
 uvicorn app.main:app --reload
+```
 
-Open browser:
+Open:
 
+```
 http://127.0.0.1:8000/docs
+```
 
-This will open the interactive API documentation.
+---
+
+# 🐳 Running with Docker
+
+Build Docker image:
+
+```
+docker build -t churn-api .
+```
+
+Run container:
+
+```
+docker run -d -p 8000:8000 churn-api
+```
+
+Open API documentation:
+
+```
+http://localhost:8000/docs
+```
+
+---
+
+# ☁ AWS Deployment
+
+The Docker container is deployed on **AWS EC2**.
+
+To start the API again:
+
+1️⃣ Start EC2 instance
+
+2️⃣ Connect to server
+
+3️⃣ Run container
+
+```
+sudo docker run -d -p 8000:8000 churn-api
+```
+
+4️⃣ Open:
+
+```
+http://<EC2_PUBLIC_IP>:8000/docs
+```
+
+---
+
+# 📸 Project Screenshots
+
+*(Add screenshots here)*
+
+Example:
+
+* FastAPI Swagger UI
+* Prediction request
+* Prediction response
+* AWS EC2 instance running
+
+---
 
 
+#  Author
 
- Author
+**Rohan Pagare**
 
-Rohan Pagare
-
-Data Science Enthusiast | Machine Learning Engineer
-
- Email: rohanpagare6616@gmail.com
-
- LinkedIn: https://linkedin.com/in/rohan-pagare-1bab0a2a9
-
- GitHub: https://github.com/Rohan1-tech
+📧 Email: [rohanpagare6616@gmail.com](mailto:rohanpagare6616@gmail.com)
+💼 LinkedIn: [https://linkedin.com/in/rohan-pagare-1bab0a2a9](https://linkedin.com/in/rohan-pagare-1bab0a2a9)
+💻 GitHub: [https://github.com/Rohan1-tech](https://github.com/Rohan1-tech)
 
